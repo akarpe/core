@@ -164,6 +164,27 @@ public class XsltTransformerTest extends AbstractTransformerTestCase {
         }
     }
 
+    @Test
+    public void test_xsl_include_with_href() throws IOException, SAXException {
+        try {
+            Transformer transformer = getTransformer("xslt-config-include-href.xml");
+
+            Assert.assertTrue(transformer instanceof XsltTransformer);
+        } catch (SwitchYardException e) {
+            Assert.assertEquals("An unexpected error ocurred while creating the xslt transformer", e.getMessage());
+        }
+    }
+    
+    @Test
+    public void test_xsl_include_with_invalid_href() throws IOException, SAXException {
+        try {
+            Transformer transformer = getTransformer("xslt-config-include-invalid-href.xml");
+            
+            Assert.fail("No SwitchYardException has been thrown");
+        } catch (SwitchYardException e) {
+            Assert.assertEquals("An unexpected error ocurred while creating the xslt transformer", e.getMessage());
+        }
+    }
     private DefaultMessage newMessage(Object content) {
         DefaultMessage message = new DefaultMessage().setContent(content);
         message.setTransformerRegistry(xformReg);
