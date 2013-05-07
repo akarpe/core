@@ -20,14 +20,14 @@ package org.switchyard.transform.xslt;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.xml.namespace.QName;
 import javax.xml.transform.ErrorListener;
-import javax.xml.transform.Source;
 import javax.xml.transform.Templates;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.URIResolver;
 import javax.xml.transform.stream.StreamSource;
+
 import org.apache.log4j.Logger;
 import org.switchyard.common.type.Classes;
 import org.switchyard.exception.SwitchYardException;
@@ -61,7 +61,7 @@ public final class XsltTransformFactory implements TransformerFactory<XsltTransf
         try {
             InputStream stylesheetStream = Classes.getResourceAsStream(xsltFileUri);
 
-        	if (stylesheetStream == null) {
+            if (stylesheetStream == null) {
                 throw new SwitchYardException("Failed to load xsl file '" + xsltFileUri + "' from classpath.");
             }
             javax.xml.transform.TransformerFactory tFactory = javax.xml.transform.TransformerFactory.newInstance();
@@ -77,10 +77,7 @@ public final class XsltTransformFactory implements TransformerFactory<XsltTransf
         } catch (IOException e) {
             throw new SwitchYardException("Unable to locate the xslt file "
                     + model.getXsltFile(), e);
-        } catch (TransformerException e) {
-        	throw new SwitchYardException("An unexpected error ocurred while creating the xslt transformer",
-                    e);
-		}
+        }
     }
     
     private class XsltTransformFactoryErrorListener implements ErrorListener {

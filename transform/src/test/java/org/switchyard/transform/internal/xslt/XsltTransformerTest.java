@@ -20,6 +20,9 @@ package org.switchyard.transform.internal.xslt;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import javax.xml.namespace.QName;
+
 import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Assert;
@@ -27,7 +30,6 @@ import org.junit.Test;
 import org.switchyard.common.type.Classes;
 import org.switchyard.config.model.ModelPuller;
 import org.switchyard.config.model.switchyard.SwitchYardModel;
-import org.switchyard.config.model.transform.TransformsModel;
 import org.switchyard.exception.SwitchYardException;
 import org.switchyard.internal.DefaultMessage;
 import org.switchyard.internal.transform.BaseTransformerRegistry;
@@ -35,15 +37,9 @@ import org.switchyard.transform.AbstractTransformerTestCase;
 import org.switchyard.transform.Transformer;
 import org.switchyard.transform.TransformerRegistry;
 import org.switchyard.transform.TransformerRegistryLoader;
-import org.switchyard.transform.TransformerUtil;
-import org.switchyard.transform.config.model.XsltTransformModel;
 import org.switchyard.transform.config.model.v1.V1XsltTransformModel;
-import org.switchyard.transform.ootb.AbstractTransformerTest;
-import org.switchyard.transform.xslt.XsltTransformFactory;
 import org.switchyard.transform.xslt.XsltTransformer;
 import org.xml.sax.SAXException;
-
-import javax.xml.namespace.QName;
 
 /**
  * @author Alejandro Montenegro <a
